@@ -1,0 +1,486 @@
+mutation SendOtpCode($request: OtpSendRequest) {
+    sendOtp(request: $request) {
+        hash {
+            value
+        }, idUser, message, status
+    }
+}
+
+mutation ValidateOtp($request: OtpValidateRequest) {
+    validateOtp(request: $request) {
+        message
+        status
+        valid
+    }
+}
+
+mutation ResendOtp($request: ResendOtpRequest) {
+    resendOtp(request: $request) {
+        message
+        status
+    }
+}
+
+mutation SavePassword($request: SavePasswordRequest) {
+    savePassword(request: $request) {
+        login {
+            accessToken
+            idUser
+            message
+            refreshToken
+            status
+        }
+        message
+        status
+    }
+}
+
+mutation SaveUserInfo($request: SaveUserInfoRequest, $saveBusinessInfoRequest2: SaveBusinessInfoRequest) {
+    saveUserInfo(request: $request) {
+        message
+        status
+    }
+    saveBusinessInfo(request: $saveBusinessInfoRequest2) {
+        idBranch
+        idMerchant
+        message
+        responseCode
+        status
+    }
+}
+
+mutation SaveMethodClabe($request: SaveMethodClabeRequest) {
+    saveMethodClabe(request: $request) {
+        idClabe
+        idFinancialData
+        message
+        status
+    }
+}
+
+mutation SaveDevice($request: SaveDeviceRequest) {
+    saveDevice(request: $request) {
+        idDevice
+        message
+        status
+    }
+}
+
+mutation UpdatePairingInfo($request: PairingInfoRequest) {
+    updatePairingInfo(request: $request) {
+        message
+        status
+    }
+}
+
+query FindFinancialInfo($request: FinancialInfoRequest) {
+    findFinancialInfo(request: $request) {
+        clabes {
+            clabe
+            holder
+            id
+        }
+        message
+        status
+    }
+}
+
+mutation PaymentWithChip($request: WithChipRequest) {
+    paymentWithChip(request: $request) {
+        apiFolio
+        authorizationNumber
+        exchange {
+            immediateExchange
+            rebootExchange
+        }
+        message
+        responseCryptogram
+        status
+        transactionDate
+        transactionId
+    }
+}
+
+mutation KeyExchange($request: KeyExchangeRequest) {
+    keyExchange(request: $request) {
+        checkValue
+        ksn
+        message
+        serverKey
+        status
+    }
+}
+
+query Login($request: LoginRequest) {
+    login(request: $request) {
+        accessToken
+        idUser
+        changePassword
+        profiles
+        message
+        refreshToken
+        status
+    }
+}
+
+mutation ForgotPassword($request: ForgotPasswordRequest) {
+    forgotPassword(request: $request) {
+        message
+        status
+        userId
+    }
+}
+
+mutation ForgotPasswordChangePassword($request: ForgotPasswordChangePasswordRequest) {
+    forgotPasswordChangePassword(request: $request) {
+        message
+        status
+    }
+}
+
+mutation ForgotPasswordValidateOtp($request: ForgotPasswordValidateOtpRequest) {
+    forgotPasswordValidateOtp(request: $request) {
+        hash
+        message
+        status
+    }
+}
+
+query FindUserAccountInfoQuery($request: UserAccountRequest) {
+    findUserAccountInfo(request: $request) {
+        message
+        status
+        userAccount {
+            holder
+            idBranch
+            idClabe
+            idFinancialData
+            idMerchant
+            nameMerchant
+        }
+    }
+}
+
+query FindTransactionsInfo($request: TransactionQueriesRequest) {
+    findTransactionsInfo(request: $request) {
+        hasNext
+        hasPrevious
+        message
+        nextPage
+        previousPage
+        status
+        totalElements
+        totalPages
+        transactionQueryResponse {
+            amount
+            commission
+            description
+            idTransaction
+            paymentTypeDescription
+            status
+            transactionDate
+        }
+    }
+}
+
+mutation ReverseWithChip($request: WithChipReverseRequest) {
+    reverseWithChip(request: $request) {
+        message
+        status
+    }
+}
+
+query FindUserInfoQuery($request: GetUserRequest) {
+    findUserInfo(request: $request) {
+        message
+        status
+        user {
+            countryCode
+            email
+            id
+            lastName
+            mobileNumber
+            name
+            status
+        }
+    }
+}
+
+mutation SaveUserInfoEditMutation($request: SaveUserInfoRequest) {
+    updateUserInfo(request: $request) {
+        message
+        status
+    }
+}
+
+query FindBankAccountInfoQuery($request: GetBankAccountRequest) {
+    findBankAccountInfo(request: $request) {
+        clabe {
+            clabe
+            holder
+            id
+            status
+        }
+        message
+        status
+    }
+}
+
+mutation UpdateBankAccountInfoMutation($request: UpdateBankAccountInfoRequest) {
+    updateBankAccountInfo(request: $request) {
+        message
+        status
+    }
+}
+
+query FindBusinessInfoQuery($request: GetBusinessRequest) {
+    findBusinessInfo(request: $request) {
+        merchant {
+            businessActivity
+            businessName
+            createdDate
+            id
+            modifiedDate
+            status
+            zipCode
+        }
+        message
+        status
+    }
+}
+
+mutation UpdateBusinessInfoMutation($request: UpdateBusinessInfoRequest) {
+    updateBusinessInfo(request: $request) {
+        message
+        status
+    }
+}
+query ValidatePasswordQuery($request: ValidatePasswordRequest) {
+    validatePassword(request: $request) {
+        accessToken
+        idUser
+        message
+        refreshToken
+        status
+    }
+}
+
+query GetSaleVoucher($request: GetSaleVoucherRequest) {
+    getSaleVoucher(request: $request) {
+        affiliation
+        aid
+        amount
+        apiFolio
+        arqc
+        authorizationMethod
+        authorizationNumber
+        bin
+        cardHolderName
+        cardIssuingBank
+        description
+        lastPanDigits
+        merchantName
+        message
+        natureCard
+        pem
+        pinpadSeries
+        status
+        transactionDate
+        transactionStatus
+        transactionTime
+        transactionType
+    }
+}
+
+
+query FindTransactionsSummary($request: FindTransactionsSummaryRequest) {
+    findTransactionsSummary(request: $request) {
+        currentPage
+        message
+        nextPage
+        pageSize
+        status
+        totalElements
+        totalGlobal
+        totalPages
+        transactionTotals {
+            amount
+            transactionDate
+        }
+    }
+}
+
+mutation SaveVoucherMutation($request: SaveVoucherRequest) {
+    saveVoucher(request: $request) {
+        message
+        status
+    }
+}
+
+mutation SendVoucher($request: SendVoucherRequest) {
+    sendVoucher(request: $request) {
+        message
+        status
+    }
+}
+
+query ValidateUser($request: ValidateUserRequest) {
+    validateUser(request: $request) {
+        message
+        status
+    }
+}
+
+query ValidateEmail($request: ValidateEmailRequest) {
+    validateEmail(request: $request) {
+        message
+        status
+    }
+}
+
+query FindCommissionInfo($request: FindCommissionInfoRequest) {
+    findCommissionInfo(request: $request) {
+        commissionInfo {
+            commissionPercentage
+            iva
+        }
+        message
+        status
+    }
+}
+
+query FindDevice($request: FindDeviceRequest) {
+    findDevice(request: $request) {
+        createdDate
+        deviceStatus
+        id
+        lastExchangeDate
+        lastExchangeStatus
+        message
+        modifiedDate
+        pairingDate
+        rebootExchangeFlag
+        status
+        type
+        version
+        initialExchangeFlag
+    }
+}
+
+mutation UpdateDeviceInfo($request: UpdateDeviceInfoRequest) {
+    updateDeviceInfo(request: $request) {
+        message
+        status
+    }
+}
+
+query FindVoucher($request: FindVoucherRequest) {
+    findVoucher(request: $request) {
+        idTransaction
+        idUser
+        message
+        status
+        statusVoucher
+    }
+}
+
+mutation RetrySaveVoucher($request: RetrySaveVoucherRequest) {
+    retrySaveVoucher(request: $request) {
+        message
+        status
+    }
+}
+
+query LogoutQuery($request: LogoutRequest) {
+    logout(request: $request) {
+        message
+        status
+    }
+}
+
+mutation RefreshJWTMutation($refreshTokenInput: RefreshTokenInput) {
+    refreshJWT(refreshTokenInput: $refreshTokenInput) {
+        accessToken
+        message
+        status
+    }
+}
+
+query GetDataPostalCode($request: GetDataPostalCodeRequest) {
+    getDataPostalCode(request: $request) {
+        city
+        country
+        countryCode
+        message
+        state
+        stateCode
+        status
+    }
+}
+
+mutation PaymentCancelRefund($request: PaymentCancelRefundRequest) {
+    paymentCancelRefund(request: $request) {
+        affiliation
+        amount
+        authorizationNumber
+        exchange {
+            immediateExchange
+            rebootExchange
+        }
+        idTransaction
+        message
+        responseCryptogram
+        status
+        transactionDate
+    }
+}
+
+query GetOperators($request: WalletGetOperatorsRequest) {
+    walletGetOperators(request: $request) {
+        operators {
+            id
+            image
+            name
+            company
+            carrier
+            type
+            legend
+            hasPackages
+            digitalId
+        }
+    }
+}
+
+query GetOneOperator($request: WalletGetOneOperatorRequest) {
+    walletGetOneOperator(request: $request) {
+        operator {
+            id
+            name
+            image
+            company
+            carrier
+            type
+            legend
+            hasPackages
+            digitalId
+            sections {
+                type
+                name
+                image
+                title
+                items {
+                    id
+                    name
+                    description
+                    amount
+                    title
+                    sku
+                    carrierCode
+                    type
+                }
+            }
+        }
+    }
+}
+
+

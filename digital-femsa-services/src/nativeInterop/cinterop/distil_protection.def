@@ -1,0 +1,5 @@
+language = Objective-C
+package = distil_protection
+modules = distil_protection
+# compilerOpts = -framework distil_protection -F/Users/josuesolis/workspace/femsa-commons/femsa-cli/imperva_ios
+# linkerOpts = -framework distil_protection -F/Users/josuesolis/workspace/femsa-commons/femsa-cli/imperva_ios
